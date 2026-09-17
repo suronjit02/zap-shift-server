@@ -33,7 +33,11 @@ async function connectToMongoDB() {
     //   parcel api
     app.get("/parcels", async (req, res) => {});
 
-    app.post("/parcels", async (req, res) => {});
+    app.post("/parcels", async (req, res) => {
+      const parcel = req.body;
+      const result = await parcelsCollection.insertOne(parcel);
+      res.send(result);
+    });
 
     console.log("You successfully connected to MongoDB!");
   } catch (err) {
