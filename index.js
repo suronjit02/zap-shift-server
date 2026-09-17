@@ -30,8 +30,10 @@ async function connectToMongoDB() {
     const db = client.db("zapshift_db");
     const parcelsCollection = db.collection("parcels");
 
-      //   parcel api
-      
+    //   parcel api
+    app.get("/parcels", async (req, res) => {});
+
+    app.post("/parcels", async (req, res) => {});
 
     console.log("You successfully connected to MongoDB!");
   } catch (err) {
