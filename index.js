@@ -1,8 +1,9 @@
-const express = require("express");
-const cors = require("cors");
-const app = express();
-require("dotenv").config();
+import express from "express";
+import cors from "cors";
+import "dotenv/config";
 import { MongoClient, ServerApiVersion } from "mongodb";
+
+const app = express();
 const port = process.env.PORT || 3000;
 
 // middleware
@@ -25,6 +26,13 @@ const client = new MongoClient(uri, {
 async function connectToMongoDB() {
   try {
     await client.connect();
+
+    const db = client.db("zapshift_db");
+    const parcelsCollection = db.collection("parcels");
+
+      //   parcel api
+      
+
     console.log("You successfully connected to MongoDB!");
   } catch (err) {
     console.error("Database connection failed:", err);
